@@ -1,1 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Restoran Mee Tauhu BaeCha</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .menu-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+    .menu-item img {
+      width: 120px;
+      height: 80px;
+      object-fit: cover;
+      margin-right: 15px;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Restoran Mee Tauhu BaeCha</h1>
+    <nav>
+      <ul>
+        <li><a href="#menu">Menu</a></li>
+        <li><a href="#order">Order</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section id="menu">
+      <h2>Menu</h2>
+      <div class="menu-item">
+        <img src="nasi goreng ayam.jpg" alt="Nasi Goreng Ayam">
+        <p>Nasi Goreng Ayam - RM15.00</p>
+      </div>
+      <div class="menu-item">
+        <img src="nasi ayam penyet.jpg" alt="Nasi Ayam Penyet">
+        <p>Nasi Ayam Penyet - RM7.00</p>
+      </div>
+      <div class="menu-item">
+        <img src="mee goreng tauhu.jpg" alt="Mee Goreng Tauhu">
+        <p>Mee Goreng Tauhu - RM9.00</p>
+      </div>
+      <div class="menu-item">
+        <img src="ayam crispy.jpg" alt="Ayam Crispy">
+        <p>Ayam Crispy - RM8.00</p>
+      </div>
+      <div class="menu-item">
+        <img src="nasi goreng telur.jpeg" alt="Nasi Goreng Telur">
+        <p>Nasi Goreng Telur - RM9.50</p>
+      </div>
+      <div class="menu-item">
+        <img src="air tin.jpg" alt="Air Tin">
+        <p>Air tin - RM2.50</p>
+      </div>
+    </section>
+
+    <section id="order">
+      <h2>Place Your Order</h2>
+      <form action="https://formsubmit.co/gamercoolbrian@gmail.com" method="POST">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="order">Order Details:</label>
+        <textarea id="order" name="order" rows="5" required></textarea>
+
+        <button type="submit">Submit Order</button>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Restoran Mee Tauhu BaeCha. All rights reserved.</p>
+  </footer>
+</body>
+</html>
 
