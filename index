@@ -35,27 +35,27 @@
     <section id="menu">
       <h2>Menu</h2>
       <div class="menu-item">
-        <img src="images/nasi goreng ayam.jpg" alt="Nasi Goreng Ayam">
+        <img src="https://i.imgur.com/4WRTNx9.jpg" alt="Nasi Goreng Ayam">
         <p>Nasi Goreng Ayam - RM15.00</p>
       </div>
       <div class="menu-item">
-        <img src="images/nasi ayam penyet.jpg" alt="Nasi Ayam Penyet">
+        <img src="https://i.imgur.com/58iWRHO.jpg" alt="Nasi Ayam Penyet">
         <p>Nasi Ayam Penyet - RM7.00</p>
       </div>
       <div class="menu-item">
-        <img src="images/mee goreng tauhu.jpg" alt="Mee Goreng Tauhu">
+        <img src="https://i.imgur.com/sXGvlNd.jpg" alt="Mee Goreng Tauhu">
         <p>Mee Goreng Tauhu - RM9.00</p>
       </div>
       <div class="menu-item">
-        <img src="images/ayam crispy.jpg" alt="Ayam Crispy">
+        <img src="https://i.imgur.com/z72pxO8.jpg" alt="Ayam Crispy">
         <p>Ayam Crispy - RM8.00</p>
       </div>
       <div class="menu-item">
-        <img src="images/nasi goreng telur.jpeg" alt="Nasi Goreng Telur">
+        <img src="https://i.imgur.com/I83Wyhg.jpg" alt="Nasi Goreng Telur">
         <p>Nasi Goreng Telur - RM9.50</p>
       </div>
       <div class="menu-item">
-        <img src="images/air tin.jpg" alt="Air Tin">
+        <img src="https://i.imgur.com/71RQIUi.jpg" alt="Air Tin">
         <p>Air tin - RM2.50</p>
       </div>
     </section>
