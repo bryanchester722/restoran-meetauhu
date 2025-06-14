@@ -10,9 +10,12 @@
     nav { background-color: #A52A2A; display: flex; justify-content: center; gap: 2rem; padding: 0.5rem 0; }
     nav a { color: white; text-decoration: none; font-weight: bold; }
 
-    .carousel-container { position: relative; width: 100%; overflow: hidden; }
+    .carousel-container { position: relative; width: 100%; overflow: hidden; max-width: 600px; margin: 1rem auto; }
     .carousel-track { display: flex; transition: transform 0.5s ease; }
-    .carousel-slide img { width: 100%; height: auto; object-fit: cover; }
+    .carousel-slide img { width: 100%; height: auto; object-fit: cover; max-height: 420px; }
+
+    .carousel-buttons { display: flex; justify-content: center; gap: 1rem; margin-top: 0.5rem; }
+    .carousel-buttons button { padding: 0.5rem 1rem; background-color: #8B0000; color: white; border: none; border-radius: 4px; cursor: pointer; }
 
     .menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem; padding: 2rem; }
     .menu-item { background: white; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.15); overflow: hidden; text-align: center; transition: transform 0.3s ease; }
@@ -50,6 +53,12 @@
         <div class="carousel-slide"><img src="https://imgur.com/z72pxO8.png" alt="Ayam Crispy"></div>
         <div class="carousel-slide"><img src="https://imgur.com/58iWRHO.png" alt="Nasi Ayam Penyet"></div>
         <div class="carousel-slide"><img src="https://imgur.com/71RQIUi.png" alt="Air Tin"></div>
+        <div class="carousel-slide"><img src="https://imgur.com/4WRTNx9.png" alt="Nasi Goreng Ayam"></div>
+        <div class="carousel-slide"><img src="https://imgur.com/I83Wyhg.png" alt="Nasi Goreng Telur"></div>
+    </div>
+    <div class="carousel-buttons">
+        <button onclick="prevSlide()">Prev</button>
+        <button onclick="nextSlide()">Next</button>
     </div>
 </div>
 
@@ -57,16 +66,16 @@
     <div class="menu-item">
         <img src="https://imgur.com/sXGvlNd.png" alt="Mee Goreng Tauhu">
         <h3>Mee Goreng Tauhu</h3>
-        <p>RM7.00</p>
+        <p>RM9.00</p>
         <input type="number" min="1" value="1" id="qty-Mee Goreng Tauhu">
-        <button onclick="addToCart('Mee Goreng Tauhu', 7)">Add to Order</button>
+        <button onclick="addToCart('Mee Goreng Tauhu', 9)">Add to Order</button>
     </div>
     <div class="menu-item">
         <img src="https://imgur.com/z72pxO8.png" alt="Ayam Crispy">
         <h3>Ayam Crispy</h3>
-        <p>RM6.00</p>
+        <p>RM8.00</p>
         <input type="number" min="1" value="1" id="qty-Ayam Crispy">
-        <button onclick="addToCart('Ayam Crispy', 6)">Add to Order</button>
+        <button onclick="addToCart('Ayam Crispy', 8)">Add to Order</button>
     </div>
     <div class="menu-item">
         <img src="https://imgur.com/58iWRHO.png" alt="Nasi Ayam Penyet">
@@ -76,11 +85,25 @@
         <button onclick="addToCart('Nasi Ayam Penyet', 9)">Add to Order</button>
     </div>
     <div class="menu-item">
+        <img src="https://imgur.com/4WRTNx9.png" alt="Nasi Goreng Ayam">
+        <h3>Nasi Goreng Ayam</h3>
+        <p>RM15.00</p>
+        <input type="number" min="1" value="1" id="qty-Nasi Goreng Ayam">
+        <button onclick="addToCart('Nasi Goreng Ayam', 15)">Add to Order</button>
+    </div>
+    <div class="menu-item">
+        <img src="https://imgur.com/I83Wyhg.png" alt="Nasi Goreng Telur">
+        <h3>Nasi Goreng Telur</h3>
+        <p>RM9.50</p>
+        <input type="number" min="1" value="1" id="qty-Nasi Goreng Telur">
+        <button onclick="addToCart('Nasi Goreng Telur', 9.5)">Add to Order</button>
+    </div>
+    <div class="menu-item">
         <img src="https://imgur.com/71RQIUi.png" alt="Air Tin">
         <h3>Air Tin</h3>
-        <p>RM2.00</p>
+        <p>RM2.50</p>
         <input type="number" min="1" value="1" id="qty-Air Tin">
-        <button onclick="addToCart('Air Tin', 2)">Add to Order</button>
+        <button onclick="addToCart('Air Tin', 2.5)">Add to Order</button>
     </div>
 </section>
 
@@ -88,7 +111,7 @@
     <h2>Your Order</h2>
     <ul id="cart-items"></ul>
     <p class="cart-total">Total: RM<span id="cart-total">0.00</span></p>
-    <form action="https://formsubmit.co/gamercoolbrian@gmail.com" method="POST" onsubmit="return prepareOrder()">
+    <form action="https://formsubmit.co/amee@gmail.com" method="POST" onsubmit="return prepareOrder()">
         <input type="hidden" name="order" id="order-details">
         <input type="text" name="name" placeholder="Your Name" required>
         <input type="email" name="email" placeholder="Your Email" required>
@@ -105,11 +128,19 @@ const track = document.getElementById('carousel-track');
 const slides = [...track.children];
 let index = 0;
 
-function nextSlide() {
-    index = (index + 1) % slides.length;
+function showSlide() {
     track.style.transform = `translateX(-${index * 100}%)`;
 }
-setInterval(nextSlide, 3000);
+
+function nextSlide() {
+    index = (index + 1) % slides.length;
+    showSlide();
+}
+
+function prevSlide() {
+    index = (index - 1 + slides.length) % slides.length;
+    showSlide();
+}
 
 let cart = [];
 function addToCart(item, price) {
