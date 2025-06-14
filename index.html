@@ -20,7 +20,7 @@
     }
     header p {
         font-family: 'Pacifico', cursive;
-        font-size: 2.6rem; /* Enlarged 2x */
+        font-size: 1.3rem;
     }
     nav {
         background-color: #FFD4C3;
@@ -159,7 +159,135 @@
     <a href="#contact">Contact</a>
 </nav>
 
-<!-- rest of the HTML remains the same -->
+<div class="carousel-container">
+    <div class="carousel-track" id="carousel-track">
+        <div class="carousel-slide"><img src="https://imgur.com/sXGvlNd.png" alt="Mee Goreng Tauhu"></div>
+        <div class="carousel-slide"><img src="https://imgur.com/z72pxO8.png" alt="Ayam Crispy"></div>
+        <div class="carousel-slide"><img src="https://imgur.com/58iWRHO.png" alt="Nasi Ayam Penyet"></div>
+        <div class="carousel-slide"><img src="https://imgur.com/4WRTNx9.png" alt="Nasi Goreng Ayam"></div>
+        <div class="carousel-slide"><img src="https://imgur.com/I83Wyhg.png" alt="Nasi Goreng Telur"></div>
+        <div class="carousel-slide"><img src="https://imgur.com/71RQIUi.png" alt="Air Tin"></div>
+    </div>
+    <div class="carousel-buttons">
+        <button onclick="prevSlide()">Prev</button>
+        <button onclick="nextSlide()">Next</button>
+    </div>
+</div>
+
+<section class="menu" id="menu">
+    <div class="menu-item">
+        <img src="https://imgur.com/sXGvlNd.png" alt="Mee Goreng Tauhu">
+        <h3>Mee Goreng Tauhu</h3>
+        <p>RM9.00</p>
+        <input type="number" min="1" value="1" id="qty-Mee Goreng Tauhu">
+        <button onclick="addToCart('Mee Goreng Tauhu', 9)">Add to Order</button>
+    </div>
+    <div class="menu-item">
+        <img src="https://imgur.com/z72pxO8.png" alt="Ayam Crispy">
+        <h3>Ayam Crispy</h3>
+        <p>RM8.00</p>
+        <input type="number" min="1" value="1" id="qty-Ayam Crispy">
+        <button onclick="addToCart('Ayam Crispy', 8)">Add to Order</button>
+    </div>
+    <div class="menu-item">
+        <img src="https://imgur.com/58iWRHO.png" alt="Nasi Ayam Penyet">
+        <h3>Nasi Ayam Penyet</h3>
+        <p>RM9.00</p>
+        <input type="number" min="1" value="1" id="qty-Nasi Ayam Penyet">
+        <button onclick="addToCart('Nasi Ayam Penyet', 9)">Add to Order</button>
+    </div>
+    <div class="menu-item">
+        <img src="https://imgur.com/4WRTNx9.png" alt="Nasi Goreng Ayam">
+        <h3>Nasi Goreng Ayam</h3>
+        <p>RM15.00</p>
+        <input type="number" min="1" value="1" id="qty-Nasi Goreng Ayam">
+        <button onclick="addToCart('Nasi Goreng Ayam', 15)">Add to Order</button>
+    </div>
+    <div class="menu-item">
+        <img src="https://imgur.com/I83Wyhg.png" alt="Nasi Goreng Telur">
+        <h3>Nasi Goreng Telur</h3>
+        <p>RM9.50</p>
+        <input type="number" min="1" value="1" id="qty-Nasi Goreng Telur">
+        <button onclick="addToCart('Nasi Goreng Telur', 9.5)">Add to Order</button>
+    </div>
+    <div class="menu-item">
+        <img src="https://imgur.com/71RQIUi.png" alt="Air Tin">
+        <h3>Air Tin</h3>
+        <p>RM2.50</p>
+        <input type="number" min="1" value="1" id="qty-Air Tin">
+        <button onclick="addToCart('Air Tin', 2.5)">Add to Order</button>
+    </div>
+</section>
+
+<section class="cart" id="order">
+    <h2>Your Order</h2>
+    <ul id="cart-items"></ul>
+    <p class="cart-total">Total: RM<span id="cart-total">0.00</span></p>
+    <form action="https://formsubmit.co/amee@gmail.com" method="POST" onsubmit="return prepareOrder()">
+        <input type="hidden" name="order" id="order-details">
+        <input type="text" name="name" placeholder="Your Name" required>
+        <input type="email" name="email" placeholder="Your Email" required>
+        <button type="submit">Submit Order</button>
+    </form>
+</section>
+
+<footer id="contact">
+    <p>&copy; 2025 Restoran A Mee | Designed by Brian</p>
+</footer>
+
+<script>
+const track = document.getElementById('carousel-track');
+const slides = [...track.children];
+let index = 0;
+
+function showSlide() {
+    track.style.transform = `translateX(-${index * 420}px)`;
+}
+
+function nextSlide() {
+    index = (index + 1) % slides.length;
+    showSlide();
+}
+
+function prevSlide() {
+    index = (index - 1 + slides.length) % slides.length;
+    showSlide();
+}
+
+let cart = [];
+function addToCart(item, price) {
+    const qty = parseInt(document.getElementById(`qty-${item}`).value);
+    if (qty <= 0 || isNaN(qty)) return;
+
+    if (confirm(`Add ${qty} x ${item} to your order?`)) {
+        cart.push({ item, price, qty });
+        updateCart();
+    }
+}
+
+function updateCart() {
+    const cartItems = document.getElementById('cart-items');
+    const cartTotal = document.getElementById('cart-total');
+    cartItems.innerHTML = '';
+    let total = 0;
+    cart.forEach(({ item, price, qty }) => {
+        const li = document.createElement('li');
+        li.textContent = `${qty} x ${item} - RM${(price * qty).toFixed(2)}`;
+        cartItems.appendChild(li);
+        total += price * qty;
+    });
+    cartTotal.textContent = total.toFixed(2);
+}
+
+function prepareOrder() {
+    const orderDetails = cart.map(({ item, price, qty }) => `${qty} x ${item} - RM${(price * qty).toFixed(2)}`).join('\n');
+    document.getElementById('order-details').value = orderDetails;
+    return true;
+}
+
+// Auto Slide Infinite Loop
+setInterval(nextSlide, 3000);
+</script>
 
 </body>
 </html>
