@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Restoran A Mee</title>
+<title>Restoran A Mee - Gallery & Reviews</title>
 <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 <style>
     body {
         margin: 0;
         font-family: Arial, sans-serif;
-        background: linear-gradient(135deg, #FFF5EB, #FFD4C3, #FFBFA9);
+        background: linear-gradient(135deg, #FFF5EB, #FFD4C3);
         color: #333;
     }
     header {
@@ -18,125 +18,37 @@
         padding: 1rem;
         text-align: center;
     }
-    header p {
+    header h1 {
+        margin: 0;
         font-family: 'Pacifico', cursive;
-        font-size: 1.3rem;
-    }
-    nav {
-        background-color: #FFD4C3;
-        display: flex;
-        justify-content: center;
-        gap: 2rem;
-        padding: 0.5rem 0;
-    }
-    nav a {
-        color: #2B2B2B;
-        text-decoration: none;
-        font-weight: bold;
     }
 
-    .carousel-container {
-        position: relative;
+    .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 1rem;
+        padding: 2rem;
+    }
+    .gallery img {
         width: 100%;
-        overflow: hidden;
-        max-width: 600px;
-        margin: 1rem auto;
-    }
-    .carousel-track {
-        display: flex;
-        transition: transform 0.5s ease;
-    }
-    .carousel-slide img {
-        width: 420px;
-        height: 595px;
+        height: 250px;
         object-fit: cover;
         border-radius: 8px;
     }
 
-    .carousel-buttons {
-        display: flex;
-        justify-content: center;
-        gap: 1rem;
-        margin-top: 0.5rem;
-    }
-    .carousel-buttons button {
-        padding: 0.5rem 1rem;
-        background-color: #FF8A73;
-        color: #fff;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
-    }
-
-    .menu {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
+    .reviews {
+        background-color: #FFEDE5;
         padding: 2rem;
+        border-radius: 8px;
+        margin: 1rem;
     }
-    .menu-item {
-        background: #FFEDE5;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        overflow: hidden;
-        text-align: center;
-        transition: transform 0.3s ease;
+    .review {
+        margin-bottom: 1rem;
+        border-bottom: 1px solid #ccc;
+        padding-bottom: 0.5rem;
     }
-    .menu-item:hover {
-        transform: translateY(-5px);
-    }
-    .menu-item img {
-        width: 100%;
-        height: 200px;
-        object-fit: cover;
-    }
-    .menu-item h3, .menu-item p {
-        margin: 0.5rem;
-        color: #2B2B2B;
-    }
-    .menu-item button, .menu-item input[type="number"] {
-        margin: 0.5rem;
-    }
-    .menu-item button {
-        background-color: #FF8A73;
-        color: #fff;
-        border: none;
-        padding: 0.5rem 1rem;
-        cursor: pointer;
-        border-radius: 4px;
-    }
-
-    .cart {
-        max-width: 500px;
-        margin: 2rem auto;
-        background: #FFEDE5;
-        padding: 1rem;
-        border-radius: 12px;
-        box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-    }
-    .cart h2 {
-        margin-top: 0;
-        color: #2B2B2B;
-    }
-    .cart ul {
-        list-style: none;
-        padding: 0;
-        color: #2B2B2B;
-    }
-    .cart li {
-        margin-bottom: 0.5rem;
-    }
-    .cart-total {
-        font-weight: bold;
-        margin-top: 1rem;
-    }
-    .cart button {
-        background-color: #FF8A73;
-        color: #fff;
-        padding: 0.5rem 1rem;
-        border: none;
-        border-radius: 4px;
-        cursor: pointer;
+    .review:last-child {
+        border-bottom: none;
     }
 
     footer {
@@ -149,144 +61,30 @@
 </head>
 <body>
 <header>
-    <h1>Restoran A Mee</h1>
-    <p>Mee Tauhu Bae - Sedap & Puas Hati!</p>
+    <h1>Restoran A Mee - Vibes & Reviews</h1>
 </header>
 
-<nav>
-    <a href="#menu">Menu</a>
-    <a href="#order">Order</a>
-    <a href="#contact">Contact</a>
-</nav>
-
-<div class="carousel-container">
-    <div class="carousel-track" id="carousel-track">
-        <div class="carousel-slide"><img src="https://imgur.com/sXGvlNd.png" alt="Mee Goreng Tauhu"></div>
-        <div class="carousel-slide"><img src="https://imgur.com/z72pxO8.png" alt="Ayam Crispy"></div>
-        <div class="carousel-slide"><img src="https://imgur.com/58iWRHO.png" alt="Nasi Ayam Penyet"></div>
-        <div class="carousel-slide"><img src="https://imgur.com/4WRTNx9.png" alt="Nasi Goreng Ayam"></div>
-        <div class="carousel-slide"><img src="https://imgur.com/I83Wyhg.png" alt="Nasi Goreng Telur"></div>
-        <div class="carousel-slide"><img src="https://imgur.com/71RQIUi.png" alt="Air Tin"></div>
-    </div>
-    <div class="carousel-buttons">
-        <button onclick="prevSlide()">Prev</button>
-        <button onclick="nextSlide()">Next</button>
-    </div>
-</div>
-
-<section class="menu" id="menu">
-    <div class="menu-item">
-        <img src="https://imgur.com/sXGvlNd.png" alt="Mee Goreng Tauhu">
-        <h3>Mee Goreng Tauhu</h3>
-        <p>RM9.00</p>
-        <input type="number" min="1" value="1" id="qty-Mee Goreng Tauhu">
-        <button onclick="addToCart('Mee Goreng Tauhu', 9)">Add to Order</button>
-    </div>
-    <div class="menu-item">
-        <img src="https://imgur.com/z72pxO8.png" alt="Ayam Crispy">
-        <h3>Ayam Crispy</h3>
-        <p>RM8.00</p>
-        <input type="number" min="1" value="1" id="qty-Ayam Crispy">
-        <button onclick="addToCart('Ayam Crispy', 8)">Add to Order</button>
-    </div>
-    <div class="menu-item">
-        <img src="https://imgur.com/58iWRHO.png" alt="Nasi Ayam Penyet">
-        <h3>Nasi Ayam Penyet</h3>
-        <p>RM9.00</p>
-        <input type="number" min="1" value="1" id="qty-Nasi Ayam Penyet">
-        <button onclick="addToCart('Nasi Ayam Penyet', 9)">Add to Order</button>
-    </div>
-    <div class="menu-item">
-        <img src="https://imgur.com/4WRTNx9.png" alt="Nasi Goreng Ayam">
-        <h3>Nasi Goreng Ayam</h3>
-        <p>RM15.00</p>
-        <input type="number" min="1" value="1" id="qty-Nasi Goreng Ayam">
-        <button onclick="addToCart('Nasi Goreng Ayam', 15)">Add to Order</button>
-    </div>
-    <div class="menu-item">
-        <img src="https://imgur.com/I83Wyhg.png" alt="Nasi Goreng Telur">
-        <h3>Nasi Goreng Telur</h3>
-        <p>RM9.50</p>
-        <input type="number" min="1" value="1" id="qty-Nasi Goreng Telur">
-        <button onclick="addToCart('Nasi Goreng Telur', 9.5)">Add to Order</button>
-    </div>
-    <div class="menu-item">
-        <img src="https://imgur.com/71RQIUi.png" alt="Air Tin">
-        <h3>Air Tin</h3>
-        <p>RM2.50</p>
-        <input type="number" min="1" value="1" id="qty-Air Tin">
-        <button onclick="addToCart('Air Tin', 2.5)">Add to Order</button>
-    </div>
+<section class="gallery">
+    <img src="https://imgur.com/A0F2G0h.png" alt="Restaurant Vibe 1">
+    <img src="https://imgur.com/tLZ9pMZ.png" alt="Restaurant Vibe 2">
+    <img src="https://imgur.com/XShPzvJ.png" alt="Restaurant Vibe 3">
+    <img src="https://imgur.com/8Fg3gMm.png" alt="Restaurant Vibe 4">
+    <img src="https://imgur.com/cQUsgDQ.png" alt="Restaurant Vibe 5">
+    <img src="https://imgur.com/xwGxXrA.png" alt="Restaurant Vibe 6">
 </section>
 
-<section class="cart" id="order">
-    <h2>Your Order</h2>
-    <ul id="cart-items"></ul>
-    <p class="cart-total">Total: RM<span id="cart-total">0.00</span></p>
-    <form action="https://formsubmit.co/amee@gmail.com" method="POST" onsubmit="return prepareOrder()">
-        <input type="hidden" name="order" id="order-details">
-        <input type="text" name="name" placeholder="Your Name" required>
-        <input type="email" name="email" placeholder="Your Email" required>
-        <button type="submit">Submit Order</button>
-    </form>
+<section class="reviews">
+    <div class="review"><strong>Aina:</strong> "Sedap gila mee tauhu! Confirm repeat!"</div>
+    <div class="review"><strong>Hakim:</strong> "Port lepak paling best, makanan semua puas hati."</div>
+    <div class="review"><strong>Sofea:</strong> "Harga berbaloi, portion besar."</div>
+    <div class="review"><strong>Arif:</strong> "Service laju, recommended sangat."</div>
+    <div class="review"><strong>Liyana:</strong> "Restoran cantik, bersih dan aesthetic."</div>
+    <div class="review"><strong>Danial:</strong> "Air tin sejuk, crispy ayam dia terbaik."</div>
 </section>
 
-<footer id="contact">
+<footer>
     <p>&copy; 2025 Restoran A Mee | Designed by Brian</p>
 </footer>
-
-<script>
-const track = document.getElementById('carousel-track');
-const slides = [...track.children];
-let index = 0;
-
-function showSlide() {
-    track.style.transform = `translateX(-${index * 420}px)`;
-}
-
-function nextSlide() {
-    index = (index + 1) % slides.length;
-    showSlide();
-}
-
-function prevSlide() {
-    index = (index - 1 + slides.length) % slides.length;
-    showSlide();
-}
-
-let cart = [];
-function addToCart(item, price) {
-    const qty = parseInt(document.getElementById(`qty-${item}`).value);
-    if (qty <= 0 || isNaN(qty)) return;
-
-    if (confirm(`Add ${qty} x ${item} to your order?`)) {
-        cart.push({ item, price, qty });
-        updateCart();
-    }
-}
-
-function updateCart() {
-    const cartItems = document.getElementById('cart-items');
-    const cartTotal = document.getElementById('cart-total');
-    cartItems.innerHTML = '';
-    let total = 0;
-    cart.forEach(({ item, price, qty }) => {
-        const li = document.createElement('li');
-        li.textContent = `${qty} x ${item} - RM${(price * qty).toFixed(2)}`;
-        cartItems.appendChild(li);
-        total += price * qty;
-    });
-    cartTotal.textContent = total.toFixed(2);
-}
-
-function prepareOrder() {
-    const orderDetails = cart.map(({ item, price, qty }) => `${qty} x ${item} - RM${(price * qty).toFixed(2)}`).join('\n');
-    document.getElementById('order-details').value = orderDetails;
-    return true;
-}
-
-setInterval(nextSlide, 3000);
-</script>
 
 </body>
 </html>
