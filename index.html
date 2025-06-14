@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restoran A Mee</title>
+    <style>
+        body { margin: 0; font-family: Arial, sans-serif; background-color: #f9f9f9; color: #333; }
+        header { background-color: #8B0000; color: white; padding: 1rem; text-align: center; }
+        nav { background-color: #A52A2A; display: flex; justify-content: center; gap: 2rem; padding: 0.5rem 0; }
+        nav a { color: white; text-decoration: none; font-weight: bold; }
+        .carousel { position: relative; overflow: hidden; max-width: 100%; height: auto; }
+        .slides { display: flex; width: 400%; animation: slide 16s infinite; }
+        .slides img { width: 100%; height: auto; object-fit: cover; }
+
+        @keyframes slide {
+            0% { transform: translateX(0%); }
+            25% { transform: translateX(-100%); }
+            50% { transform: translateX(-200%); }
+            75% { transform: translateX(-300%); }
+            100% { transform: translateX(0%); }
+        }
+
+        .menu { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem; padding: 2rem; }
+        .menu-item { background: white; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); overflow: hidden; }
+        .menu-item img { width: 100%; height: 350px; object-fit: cover; }
+        .menu-item h3 { margin: 0; padding: 1rem; background-color: #eee; }
+
+        form { max-width: 500px; margin: 2rem auto; background: white; padding: 1rem; border-radius: 8px; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
+        form input, form textarea { width: 100%; padding: 0.5rem; margin-bottom: 1rem; border-radius: 4px; border: 1px solid #ccc; }
+        form button { background-color: #8B0000; color: white; padding: 0.75rem 1.5rem; border: none; border-radius: 4px; cursor: pointer; }
+
+        footer { background-color: #333; color: #fff; text-align: center; padding: 1rem; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Restoran A Mee</h1>
+        <p>Mee Tauhu Bae - Sedap & Puas Hati!</p>
+    </header>
+
+    <nav>
+        <a href="#menu">Menu</a>
+        <a href="#order">Order</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <div class="carousel">
+        <div class="slides">
+            <img src="https://imgur.com/sXGvlNd.png" alt="Mee Goreng Tauhu">
+            <img src="https://imgur.com/z72pxO8.png" alt="Ayam Crispy">
+            <img src="https://imgur.com/58iWRHO.png" alt="Nasi Ayam Penyet">
+            <img src="https://imgur.com/71RQIUi.png" alt="Air Tin">
+        </div>
+    </div>
+
+    <section class="menu" id="menu">
+        <div class="menu-item">
+            <img src="https://imgur.com/sXGvlNd.png" alt="Mee Goreng Tauhu">
+            <h3>Mee Goreng Tauhu</h3>
+        </div>
+        <div class="menu-item">
+            <img src="https://imgur.com/z72pxO8.png" alt="Ayam Crispy">
+            <h3>Ayam Crispy</h3>
+        </div>
+        <div class="menu-item">
+            <img src="https://imgur.com/58iWRHO.png" alt="Nasi Ayam Penyet">
+            <h3>Nasi Ayam Penyet</h3>
+        </div>
+        <div class="menu-item">
+            <img src="https://imgur.com/71RQIUi.png" alt="Air Tin">
+            <h3>Air Tin</h3>
+        </div>
+    </section>
+
+    <section id="order">
+        <form action="https://formsubmit.co/gamercoolbrian@gmail.com" method="POST">
+            <h2>Order Now</h2>
+            <input type="text" name="name" placeholder="Your Name" required>
+            <input type="email" name="email" placeholder="Your Email" required>
+            <textarea name="order" placeholder="Your Order Details" rows="4" required></textarea>
+            <button type="submit">Submit Order</button>
+        </form>
+    </section>
+
+    <footer id="contact">
+        <p>&copy; 2025 Restoran A Mee | Designed by CHARLs</p>
+    </footer>
+</body>
+</html>
